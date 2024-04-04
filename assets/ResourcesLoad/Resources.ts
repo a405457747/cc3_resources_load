@@ -6,7 +6,7 @@ const { ccclass, property } = _decorator;
 export class Resources extends Component {
 
 
-    static textDict={"a":"b"};
+    static textDict={"a":"b",b_t:"aa"};
 
     onLoad(){
       Resources.LoadText("text/t");
@@ -18,19 +18,14 @@ export class Resources extends Component {
     }
 
     update(deltaTime: number) {
+        console.log(Resources.b_t);
     }
 
     static LoadText(filePath:string):void{
 
-        if(filePath in Resources.textDict){
-            console.log("返回，数据已经有了");
-            return;
-        }
-
         resources.load(filePath,TextAsset,(err,asset)=>{
             if(err) return;
             Resources.textDict[filePath]=asset.text;
-            console.log(Resources.textDict);
         })
     }
 }
