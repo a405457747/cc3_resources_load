@@ -1,7 +1,7 @@
 [
   {
     "__type__": "cc.SceneAsset",
-    "_name": "scene-2d",
+    "_name": "testResMgr",
     "_objFlags": 0,
     "_native": "",
     "scene": {
@@ -25,7 +25,7 @@
     "_globals": {
       "__id__": 8
     },
-    "_id": "972996ba-5c69-4b15-992e-a5ebb3e336d0"
+    "_id": "2b6f6f92-0819-4cd2-a18e-b99fa4f22a33"
   },
   {
     "__type__": "cc.Node",
