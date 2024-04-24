@@ -4,16 +4,31 @@ const { ccclass, property } = _decorator;
 @ccclass('ResMgr')
 export class ResMgr extends Component {
 
-    static inst:ResMgr|null=null;
+   private static inst:ResMgr|null=null;
 
+    @property([TextAsset])
+    texts:TextAsset[]=[];
+
+    @property([JsonAsset])
+    jsons: JsonAsset[] = [];
+
+
+    @property([SpriteFrame])
+    spriteFrames: SpriteFrame[] = [];
     static get Inst(){
+        /*
         if(ResMgr.inst===null){
             let n = new Node("ResMgr");
             ResMgr.inst= n.addComponent(ResMgr);
             find("Canvas")?.addChild(n);
         }
+        */
 
         return ResMgr.inst;
+    }
+
+    protected onLoad(): void {
+        ResMgr.inst=this;
     }
 
     test(){
@@ -22,6 +37,33 @@ export class ResMgr extends Component {
         this.loadText("text/t",(text:any)=>{
             console.log(text);
         });
+    }
+
+    loadSpriteSync(name:string){
+        for(let item of this.spriteFrames){
+            if(item.name===name){
+                return item;
+            }
+        }
+        return null;
+    }
+
+    loadTextSync(name:string){
+        for(let item of this.texts){
+            if(item.name===name){
+                return item.text;
+            }
+        }
+        return null;
+    }
+
+    loadJsonSync(name:string){
+        for(let item of this.jsons){
+            if(item.name===name){
+                return item.json;
+            }
+        }
+        return null;
     }
 
     loadText(filePath:string,func:Function){

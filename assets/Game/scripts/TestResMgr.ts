@@ -8,7 +8,10 @@ export class TestResMgr extends Component {
 
 
     start() {
-        ResMgr.Inst.test();
+        //ResMgr.Inst.test();
+
+        let k=ResMgr.Inst.loadTextSync("t");
+        console.log(k);
     }
 
     update(deltaTime: number) {
